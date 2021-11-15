@@ -6,7 +6,7 @@ namespace Programming_CSharp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("yoshida");
+            Console.WriteLine("tokuda");
         }
     }
 }
