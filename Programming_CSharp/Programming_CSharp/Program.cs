@@ -10,32 +10,48 @@ namespace Programming_CSharp
             var userName = Console.ReadLine();
             Console.WriteLine("パスワードを入力してください");
             var userPassword = Console.ReadLine();
-            int i = 0;
-
+            bool x = false;
+            string falseReason = "";
 
             do
             {
-
                 Console.WriteLine("もう一度名前を入力してください");
                 var userNameVerify = Console.ReadLine();
                 Console.WriteLine("もう一度パスワードを入力してください");
                 var userPasswordVerify = Console.ReadLine();
-
-                if (userName != userNameVerify)
+                x = JudgedVerify(userName, userNameVerify,
+                    userPassword, userPasswordVerify, ref falseReason);
+                if (x == false)
                 {
-                    Console.WriteLine("名前が間違っています");
-                }
-                else if (userPassword != userPasswordVerify)
-                {
-                    Console.WriteLine("パスワードが間違っています");
-                }
-                else
-                {
-                    Console.WriteLine("ログイン成功");
-                    i = 1;
+                    Console.WriteLine($"{falseReason}が間違っています");
+                    continue;
                 }
 
-            } while (i == 0);
+            } while (x == false);
+
+            Console.WriteLine("ログイン成功");
+        }
+
+        static bool JudgedVerify(string userName,string userNameVerify, 
+            string userPassword, string userPasswordVerify, ref string falseReason)
+        {
+            bool returnBooleanValue;
+
+            if (userName != userNameVerify)
+            {
+                returnBooleanValue = false;
+                falseReason = "名前";
+            }
+            else if (userPassword != userPasswordVerify)
+            {
+                returnBooleanValue = false;
+                falseReason = "パスワード";
+            }
+            else
+            {
+                returnBooleanValue = true;
+            }
+            return returnBooleanValue;
         }
     }
 }
