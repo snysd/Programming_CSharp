@@ -6,25 +6,25 @@ namespace Programming_CSharp
     {
         static void Main(string[] args)
         {
-            for (var i = 3; i < 6; i++)
-            {
-                CreateTriangle(i);
-            }
+            Car car = new Car();
+            car.Start();
+
+  
         }
 
-        static void CreateTriangle(int size)
+    }
+
+    class Car
+    {
+        int tire = 4;
+        int handle = 1;
+        public void Start()
         {
-            for (var i = 0; i < size; i++)
-            {
-                string str = "$";
-                for (int j = 0; j < i; j++)
-                {
-                    str += "$";
-                }
-                Console.WriteLine(str);
-            }
+            Console.WriteLine("Start");
         }
-
-
+        void Stop()
+        {
+            Console.WriteLine("Stop");
+        }
     }
 }
