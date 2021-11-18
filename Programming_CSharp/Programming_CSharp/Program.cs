@@ -6,51 +6,43 @@ namespace Programming_CSharp
     {
         static void Main(string[] args)
         {
-            Vehicle Bicycle = new Vehicle("自転車", 2);
-            Bicycle.ShowDetail();
-
-            Vehicle Car = new Vehicle("自動車", 4);
-            Car.ShowDetail();
+            Student student = new Student("yoshida", 12, 12345, 3);
+            student.SelfIntroduction();
+            student.StudentIntroduction();
         }
 
     }
 
-    class Vehicle
+    class Person
     {
-        public Vehicle(string name, int tire)
+        string name;
+        int age;
+        public Person(string name, int age)
         {
             this.name = name;
-            this.tire = tire;
-            Console.WriteLine("constractor");
+            this.age = age;
         }
 
-        private int handle = 1;
-        public int tire;
-        public string name;
-        public void ShowDetail()
+        public void SelfIntroduction()
         {
-            Console.WriteLine($"名前：{name}");
-            Console.WriteLine($"タイヤの数：{tire}");
-            Console.WriteLine($"ハンドルの数：{handle}");
-
-        }
-
-        public void Start()
-        {
-            Console.WriteLine("発車します");
-        }
-
-        public void Stop()
-        {
-            Console.WriteLine("停車します");
+            Console.WriteLine($"こんにちは、私の名前は{name}です。{age}歳です。");
         }
     }
-    /* 実行結果
-    名前：自動車
-    タイヤの数：4
-    ハンドルの数：1
-    名前：自転車
-    タイヤの数：2
-    ハンドルの数：1
-    */
+
+    class Student : Person
+    {
+        int studentId;
+        int studentGrade;
+
+        public Student(string name, int age, int studentIdIn, int studentGradeIn): base(name,age)
+        {
+            studentId = studentIdIn;
+            studentGrade = studentGradeIn;
+        }
+
+        public void StudentIntroduction()
+        {
+            Console.WriteLine($"私の学籍番号は{studentId}です。私の学年は{studentGrade}です。");
+        }
+    }
 }
