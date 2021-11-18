@@ -6,14 +6,10 @@ namespace Programming_CSharp
     {
         static void Main(string[] args)
         {
-            Vehicle Bicycle = new Vehicle();
-            Bicycle.tire = 2;
-            Bicycle.name = "自転車";
+            Vehicle Bicycle = new Vehicle("自転車", 2);
             Bicycle.ShowDetail();
 
-            Vehicle Car = new Vehicle();
-            Car.tire = 4;
-            Car.name = "自動車";
+            Vehicle Car = new Vehicle("自動車", 4);
             Car.ShowDetail();
         }
 
@@ -21,10 +17,16 @@ namespace Programming_CSharp
 
     class Vehicle
     {
+        public Vehicle(string name, int tire)
+        {
+            this.name = name;
+            this.tire = tire;
+            Console.WriteLine("constractor");
+        }
+
         private int handle = 1;
         public int tire;
         public string name;
-
         public void ShowDetail()
         {
             Console.WriteLine($"名前：{name}");
