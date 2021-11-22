@@ -6,43 +6,29 @@ namespace Programming_CSharp
     {
         static void Main(string[] args)
         {
-            Student student = new Student("yoshida", 12, 12345, 3);
-            student.SelfIntroduction();
-            student.StudentIntroduction();
-        }
+            Console.Write("ユーザ名を入力:");
+            UserInfo.userName = Console.ReadLine();
+            Console.Write("パスワードを入力:");
+            UserInfo.password = Console.ReadLine();
 
+            Console.Write("ユーザ名を再入力:");
+            var userNameIn = Console.ReadLine();
+            Console.Write("パスワードを再入力:");
+            var passwordIn = Console.ReadLine();
+            
+            if(userNameIn == UserInfo.userName 
+            && passwordIn == UserInfo.password)
+            {
+                Console.WriteLine("ログインしました");
+            }
+            else
+            {
+                Console.WriteLine("間違っています");
+            }
+        }
     }
-
-    class Person
+    static class UserInfo
     {
-        string name;
-        int age;
-        public Person(string name, int age)
-        {
-            this.name = name;
-            this.age = age;
-        }
-
-        public void SelfIntroduction()
-        {
-            Console.WriteLine($"こんにちは、私の名前は{name}です。{age}歳です。");
-        }
-    }
-
-    class Student : Person
-    {
-        int studentId;
-        int studentGrade;
-
-        public Student(string name, int age, int studentIdIn, int studentGradeIn): base(name,age)
-        {
-            studentId = studentIdIn;
-            studentGrade = studentGradeIn;
-        }
-
-        public void StudentIntroduction()
-        {
-            Console.WriteLine($"私の学籍番号は{studentId}です。私の学年は{studentGrade}です。");
-        }
+        public static string userName, password;
     }
 }
