@@ -1,6 +1,7 @@
 ﻿using System;
-using Programming_CSharp.PersonModel;
-using Programming_CSharp.Stack;
+using System.IO;     //ファイル操作
+using System.Text;　 //高度な文字処理
+
 
 namespace Programming_CSharp
 {
@@ -8,12 +9,10 @@ namespace Programming_CSharp
     {
         static void Main(string[] args)
         {
-            Employee John = new Employee("John", 35, 11926, "開発部");
-            Console.WriteLine(InfoStack.name);
-            Employee Ken = new Employee("Ken", 28, 38771, "営業部");
-            Console.WriteLine(InfoStack.name);
-            Employee Lisa = new Employee("Lisa", 44, 2991, "情報セキュリティ");
-            Console.WriteLine(InfoStack.name);
+            StreamReader sr = new StreamReader(@"C:\Programming\SRC\Programming_CSharp\Programming_CSharp\Test.txt");
+            string str = sr.ReadToEnd();
+            sr.Close();
+            Console.WriteLine(str);
         }
     }
 }
