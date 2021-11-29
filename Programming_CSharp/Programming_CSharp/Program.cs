@@ -9,10 +9,12 @@ namespace Programming_CSharp
     {
         static void Main(string[] args)
         {
-            StreamReader sr = new StreamReader(@"C:\Programming\SRC\Programming_CSharp\Programming_CSharp\Test.txt");
-            string str = sr.ReadToEnd();
-            sr.Close();
-            Console.WriteLine(str);
+            var writer = new StreamWriter(@"C:\Programming\SRC\Programming_CSharp\Programming_CSharp\Test.txt",false);
+
+            writer.WriteLine("この内容を書き込みます。");
+
+            writer.Close();
+
         }
     }
 }
