@@ -1,6 +1,9 @@
 ﻿using System;
 using TestLibrary;
-
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using System.Collections.Generic;
+using System.IO;
 
 namespace Programming_CSharp
 {
@@ -8,9 +11,24 @@ namespace Programming_CSharp
     {
         static void Main(string[] args)
         {
-            ConsoleTest consoletest = new ConsoleTest();
-            consoletest.DispIntroduction("aaa", 99);
-
+            StreamReader r = new StreamReader(@"C:\Programming\SRC\Programming_CSharp\Programming_CSharp\test.json");
+            string jsonString = r.ReadToEnd();
+            var data = JsonConvert.DeserializeObject<TasksDto>(jsonString, new IsoDateTimeConverter { DateTimeFormat = "dd/MM/yyyy" });
+            r.Close();
+            Console.WriteLine(data.tasks[0].taskName);
         }
+    }
+     public class TasksDto
+    {
+        public List<Task> tasks;
+    }
+
+    public class Task
+    {
+        public int id;
+        public string taskName;
+        public string discription;
+        public DateTime dueDate;
+        public bool isDone;
     }
 }
