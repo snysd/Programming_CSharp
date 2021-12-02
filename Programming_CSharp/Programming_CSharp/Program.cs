@@ -15,7 +15,16 @@ namespace Programming_CSharp
             string jsonString = r.ReadToEnd();
             var data = JsonConvert.DeserializeObject<TasksDto>(jsonString, new IsoDateTimeConverter { DateTimeFormat = "dd/MM/yyyy" });
             r.Close();
-            Console.WriteLine(data.tasks[0].taskName);
+
+            foreach(var task in data.tasks)
+            {
+                if(task.isDone == false)
+                {
+                    Console.WriteLine(task.taskName);
+                }
+            }
+
+
         }
     }
      public class TasksDto
