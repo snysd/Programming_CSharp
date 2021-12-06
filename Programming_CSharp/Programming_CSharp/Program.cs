@@ -11,33 +11,29 @@ namespace Programming_CSharp
     {
         static void Main(string[] args)
         {
-            StreamReader r = new StreamReader(@"C:\Programming\SRC\Programming_CSharp\Programming_CSharp\test.json");
-            string jsonString = r.ReadToEnd();
-            var data = JsonConvert.DeserializeObject<TasksDto>(jsonString, new IsoDateTimeConverter { DateTimeFormat = "dd/MM/yyyy" });
-            r.Close();
-
-            foreach(var task in data.tasks)
+            // ディクショナリの宣言
+            var dic = new Dictionary<string, int>();
+            for (int i = 1; i < 4; i++)
             {
-                if(task.isDone == false)
-                {
-                    Console.WriteLine(task.taskName);
-                }
+                Console.WriteLine("ユーザー名とパスワードを入力");
+                var userName = Console.ReadLine();
+                var password = Int32.Parse(Console.ReadLine());
+                dic.Add(userName, password);
             }
 
+            while (true)
+            {
+                Console.WriteLine("ユーザー名とパスワードを再入力");
+                var userName1 = Console.ReadLine();
+                var password1 = Int32.Parse(Console.ReadLine());
+                if (dic.ContainsKey(userName1) && dic[userName1] == password1)
+                {
+                    Console.WriteLine("ログイン成功");
 
+                    break;
+                }
+            }
         }
     }
-     public class TasksDto
-    {
-        public List<Task> tasks;
-    }
-
-    public class Task
-    {
-        public int id;
-        public string taskName;
-        public string discription;
-        public DateTime dueDate;
-        public bool isDone;
-    }
+   
 }
