@@ -15,9 +15,9 @@ namespace Programming_CSharp
     {
         public static void Main(string[] args)
         {
-            AfterInputNameActions afterInputNameActions = new AfterInputNameActions(Hello);
-            afterInputNameActions += DispId;
-            afterInputNameActions += DispCountry;
+            AfterInputNameActions afterInputNameActions = new AfterInputNameActions((Student student) => { Console.WriteLine("こんにちは{0}さん", student.name); });
+            afterInputNameActions += (Student student) => { Console.WriteLine("出席番号は{0}番です", student.id); };
+            afterInputNameActions += (Student student) => {Console.WriteLine("{0}からようこそ", student.country); };
 
             Console.WriteLine("input your name");
             string name = Console.ReadLine();
@@ -57,19 +57,6 @@ namespace Programming_CSharp
                     afterInputNameActions(oneStudent);
                 }
             }
-        }
-
-        public static void Hello(Student student)
-        {
-            Console.WriteLine("こんにちは{0}さん", student.name);
-        }
-        public static void DispId(Student student)
-        {
-            Console.WriteLine("出席番号は{0}番です", student.id);
-        }
-        public static void DispCountry(Student student)
-        {
-            Console.WriteLine("{0}からようこそ", student.country);
         }
     }
 
